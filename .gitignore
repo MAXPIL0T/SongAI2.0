@@ -1,0 +1,6 @@
+node_modules
+client/build
+venv/
+sound_files
+__pycache__
+output
