@@ -1,5 +1,5 @@
 # SongAI
-- A fullstack application that turns singing into a music video.
+- A fullstack application that turns singing or typed lyrics into a music video.
 
 ## Deployment
 - In base directory run `npm install` and then `npm start`.
