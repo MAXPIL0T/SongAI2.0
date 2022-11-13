@@ -45,8 +45,8 @@ def genre_to_video(genre):
     print(genre)
     return video_name.get(genre, "marius.mp4")
 
-video_clip = VideoFileClip("{}\\server\\python\\videos\\{}".format(os.getcwd(), genre_to_video(genre)))
-genre_audio = AudioFileClip("{}\\server\\python\\songs\\{}".format(os.getcwd(), genre_to_song(genre)))
+video_clip = VideoFileClip("{}/server/python/videos/{}".format(os.getcwd(), genre_to_video(genre)))
+genre_audio = AudioFileClip("{}/server/python/songs/{}".format(os.getcwd(), genre_to_song(genre)))
 # video_clip = VideoFileClip('./server/python/100_0001.mov')
 vocal_audio = AudioFileClip(vocal_path)
 
