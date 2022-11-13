@@ -12,7 +12,7 @@ transcribeButton.addEventListener("click", transcribeText);
 function textInput() {
     document.getElementById('content').innerHTML = `
         <textarea name="text-entry-field" id="text-entry-field"></textarea>
-        <button id="submit">Submit and generate video</button>"
+        <button id="submit">Submit for pre-processing.</button>
         <div id='music-vid-c'></div>
     `;
 
@@ -25,7 +25,6 @@ function textInput() {
         const text = await res.text();
         console.log(text)
         await musicVideoConfirmation(text);
-
     });
 }
 
@@ -59,10 +58,10 @@ function transcribeText() {
 }
 
 function uploadSoundData(blob) {
-    const filename = "sound-file-" + new Date().getTime() + ".wav";
+    const filename = "" + new Date().getTime() + ".wav";
     const formData = new FormData();
     formData.append("audio_data", blob, filename);
-    
+    console.log(formData)
     fetch('/uploadwav', {
         method: 'POST',
         body: formData
@@ -81,16 +80,21 @@ async function musicVideoConfirmation(text) {
     step_div.innerHTML = `
         <button id="getVideo">Generate Music Video</button>
     `;
-    document.getElementById('controls').innerHTML = '';
     const btn = document.getElementById('getVideo');
     btn.addEventListener('click', async function() {
+        document.getElementById('content').innerHTML = `
+            <p>The system is cassifying the genre and making your video.<br>Please be patient as this can take up to three minutes.</p>
+            <center><img style="margin-top: 50px" width="50px" height="50px" src="./loading.gif" alt="loading"></ceneter>
+        `;
         const video_url = await fetch("/getMusicVideo", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({text: parsed.str, name: parsed.file_name})
         });
-        // document.getElementById('video-box').innerHTML = `
-        //     <video src="./content/${await video_url.text()}"></video>
-        // `;
+        file_name = await video_url.text()
+        console.log(file_name)
+        document.getElementById('content').innerHTML = `
+            <video height="400px" width="auto" src="./finalVid/${file_name}" controls autoplay="autoplay"></video>
+        `;
     });
 }

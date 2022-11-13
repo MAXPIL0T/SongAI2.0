@@ -47,7 +47,6 @@ def genre_to_video(genre):
 
 video_clip = VideoFileClip("{}/server/python/videos/{}".format(os.getcwd(), genre_to_video(genre)))
 genre_audio = AudioFileClip("{}/server/python/songs/{}".format(os.getcwd(), genre_to_song(genre)))
-# video_clip = VideoFileClip('./server/python/100_0001.mov')
 vocal_audio = AudioFileClip(vocal_path)
 
 genre_clip = genre_audio.volumex(0.5)

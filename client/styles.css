@@ -51,10 +51,26 @@ h1 {
 #content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #text-entry-field {
   width: 75vw;
   height: 50vh;
   padding: 3px;
+}
+
+#controls {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  flex-direction: column;
+}
+
+#btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 40px;
 }

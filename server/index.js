@@ -78,13 +78,13 @@ app.post('/getMusicVideo', (req, res) => {
 
   python.on('exit', (code) => {
     console.log(video_file_path);
-    res.send(video_file_path);
+    res.send(new_file_name);
   }); 
 });
 
-app.get('/content/:id', (res, req) => {
-  video_id = req.params.id
-  // res.file
+app.get('/finalVid/:id', (req, res) => {
+  const video_id = req.params.id;
+  res.sendFile(path.resolve(`./server/python/output/${video_id}`));
 });
 
 app.listen(port, () => {
