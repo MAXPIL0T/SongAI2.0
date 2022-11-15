@@ -14,7 +14,8 @@ from nltk.corpus import stopwords
 
 nltk.download('punkt')
 nltk.download('stopwords')
-
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 def get_label(labels):
     for label in labels:
